@@ -1,0 +1,6 @@
+
+/tools/
+!/tools/packages.config
+
+/generated/
+/output/

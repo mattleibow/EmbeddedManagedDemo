@@ -1,0 +1,4 @@
+[submodule "externals/embeddinator-objc"]
+	path = externals/embeddinator-objc
+	url = https://github.com/mono/Embeddinator-4000.git
+	branch = objc

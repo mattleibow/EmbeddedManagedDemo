@@ -1,9 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ManagedLibrary
 {
 	public class Calculator
 	{
+		private static readonly Dictionary<Operation, string> symbols = new Dictionary<Operation, string>
+		{
+			{ Operation.Add, "+" },
+			{ Operation.Subtract, "-" },
+			{ Operation.Multiply, "×" },
+			{ Operation.Divide, "÷" },
+			{ Operation.Invert, "±" },
+			{ Operation.Square, "²" },
+			{ Operation.SquareRoot, "√" },
+			{ Operation.Equals, "=" },
+		};
+
 		private decimal operand;
 
 		public Calculator()
@@ -65,7 +79,7 @@ namespace ManagedLibrary
 					// this is the first operation
 					PreviousOperand = Operand;
 				}
-				else
+				else if (HasOperand)
 				{
 					switch (Operation)
 					{
@@ -85,7 +99,7 @@ namespace ManagedLibrary
 				}
 
 				// the equals operation is not a real operation
-				if (Operation == Operation.Equals)
+				if (op == Operation.Equals)
 				{
 					op = Operation.None;
 				}
@@ -120,6 +134,85 @@ namespace ManagedLibrary
 				op == Operation.Subtract ||
 				op == Operation.Multiply ||
 				op == Operation.Divide;
+		}
+
+		public static Operation GetOperation(string symbol)
+		{
+			symbol = symbol?.Trim() ?? string.Empty;
+
+			if (symbols.ContainsValue(symbol))
+				return symbols.FirstOrDefault(s => s.Value.Equals(symbol, StringComparison.OrdinalIgnoreCase)).Key;
+
+			return Operation.None;
+		}
+
+		public static string GetSymbol(Operation op)
+		{
+			if (op == Operation.None)
+				return "<none>";
+
+			string symbol;
+			if (symbols.TryGetValue(op, out symbol))
+				return symbol;
+
+			return "<unknown>";
+		}
+
+		public string HandleSymbol(string display, string symbol)
+		{
+			if (string.IsNullOrEmpty(symbol))
+				return display;
+
+			if (char.IsDigit(symbol[0]))
+			{
+				// handle numbers
+
+				// first "real", non-zero digit replaces
+				if (!HasOperand || display.Equals("0", StringComparison.OrdinalIgnoreCase))
+					display = symbol;
+				else
+					display += symbol;
+
+				// update calulator
+				Operand = decimal.Parse(display);
+			}
+			else if (symbol.Equals(".", StringComparison.OrdinalIgnoreCase))
+			{
+				// handle the dot
+
+				// the dot is the first "digit"
+				if (!HasOperand)
+				{
+					Operand = 0;
+					display = "0";
+				}
+
+				// the dot can just be added on
+				if (!display.Contains("."))
+					display += symbol;
+			}
+			else if (symbol.Equals("C", StringComparison.OrdinalIgnoreCase))
+			{
+				Clear();
+				display = Operand.ToString();
+			}
+			else
+			{
+				var op = Calculator.GetOperation(symbol);
+				if (op != Operation.None)
+				{
+					// handle the operations
+					PerformOperation(op);
+
+					// update UI
+					if (HasOperand)
+						display = Operand.ToString();
+					else
+						display = PreviousOperand.ToString();
+				}
+			}
+
+			return display;
 		}
 	}
 }

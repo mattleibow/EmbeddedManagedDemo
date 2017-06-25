@@ -38,7 +38,7 @@ Task("Externals")
 });
 
 Task("Build")
-    // .IsDependentOn("Externals")
+    .IsDependentOn("Externals")
     .Does(() =>
 {
     // build the managed library

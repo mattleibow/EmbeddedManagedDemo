@@ -11,9 +11,9 @@ namespace ManagediOSLibrary
 	public class CalculatorView : UIView
 	{
 		private static readonly string[] labels = {
-			"C", "~", "^", "!",
-			"7", "8", "9", "/",
-			"4", "5", "6", "*",
+			"C", "±", "²", "√",
+			"7", "8", "9", "÷",
+			"4", "5", "6", "×",
 			"1", "2", "3", "-",
 			"0", ".", "=", "+",
 		};
@@ -50,6 +50,7 @@ namespace ManagediOSLibrary
 			{
 				var btn = new UIButton(UIButtonType.System);
 				btn.SetTitle(l, UIControlState.Normal);
+				btn.TouchUpInside += OnButtonTapped;
 				return btn;
 			}).ToArray();
 			AddSubviews(buttons);
@@ -57,7 +58,7 @@ namespace ManagediOSLibrary
 			display = new UILabel
 			{
 				TextAlignment = UITextAlignment.Right,
-				Text = "0.0",
+				Text = "0",
 				Lines = 1,
 				BackgroundColor = UIColor.White.ColorWithAlpha(0.0f)
 			};
@@ -72,7 +73,7 @@ namespace ManagediOSLibrary
 		}
 
 		[Export("calculator")]
-		public CalculatorProxy Calculator => new CalculatorProxy(calculator);
+		public CalculatorProxy CalculatorProxy => new CalculatorProxy(calculator);
 
 		[Export("buttonMargin")]
 		public nfloat ButtonMargin
@@ -122,6 +123,14 @@ namespace ManagediOSLibrary
 				}
 				displayContainer.BackgroundColor = value;
 			}
+		}
+
+		private void OnButtonTapped(object sender, EventArgs e)
+		{
+			var btn = sender as UIButton;
+			var symbol = btn?.Title(UIControlState.Normal)?.Trim();
+
+			display.Text = calculator.HandleSymbol(display.Text, symbol);
 		}
 
 		public void Reset()

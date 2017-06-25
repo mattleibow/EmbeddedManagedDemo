@@ -6,21 +6,6 @@ var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
 //////////////////////////////////////////////////////////////////////
-// CONSTANTS
-//////////////////////////////////////////////////////////////////////
-
-// var ManagedNuGetPackageVersion = "2.1.0";
-// var ManagedNuGetPackage = string.Format("https://www.nuget.org/api/v2/package/Xamarin.Controls.SignaturePad/{0}", ManagedNuGetPackageVersion);
-
-// var EmbeddinatorMacPkgVersion = "0.2.0.79";
-// var EmbeddinatorMacPkg = string.Format("https://dl.xamarin.com/embeddinator/Xamarin.Embeddinator-4000-{0}.pkg", EmbeddinatorMacPkgVersion);
-
-// var objcgen = string.Format("externals/embeddinator-objc/Library/Frameworks/Xamarin.Embeddinator-4000.framework/Versions/{0}/bin/objcgen.exe", EmbeddinatorMacPkgVersion);
-
-// var managediOSAssembly = "externals/managed/lib/Xamarin.iOS/SignaturePad.dll";
-// var managedAndroidAssembly = "externals/managed/lib/MonoAndroid/SignaturePad.dll";
-
-//////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
@@ -35,23 +20,41 @@ Task("Externals")
     // build embeddinator for objective-c
     NuGetRestore("externals/embeddinator-objc/generator.sln");
     MSBuild("externals/embeddinator-objc/objcgen/objcgen.csproj");
+
+    // build embeddinator for java
+    NuGetRestore("externals/embeddinator/build/MonoEmbeddinator4000.sln");
+    MSBuild("externals/embeddinator/build/MonoEmbeddinator4000.sln");
 });
 
 Task("Build")
     .IsDependentOn("Externals")
     .Does(() =>
 {
+    EnsureDirectoryExists("generated");
+    var output = MakeAbsolute((DirectoryPath)"generated");
+
+    var embeddinator = MakeAbsolute((FilePath)"externals/embeddinator/build/lib/Debug/MonoEmbeddinator4000.exe");
+    var objcgen = MakeAbsolute((FilePath)"externals/embeddinator-objc/objcgen/bin/Debug/objcgen.exe");
+
+    var iOSLib = MakeAbsolute((FilePath)"managed/ManagediOSLibrary/bin/Debug/ManagediOSLibrary.dll");
+    var managedLib = MakeAbsolute((FilePath)"managed/ManagedLibrary/bin/Debug/netstandard1.0/ManagedLibrary.dll");
+
+    var objcLibs = string.Join(" ", new [] { iOSLib.FullPath, managedLib.FullPath });
+    var javaLibs = string.Join(" ", new [] { managedLib.FullPath });
+
     // build the managed library
     MSBuild("managed/managed.sln");
 
-    // run embeddinator
-    EnsureDirectoryExists("generated");
-    var libs = 
-        "managed/ManagediOSLibrary/bin/Debug/ManagediOSLibrary.dll " +
-        "managed/ManagedLibrary/bin/Debug/netstandard1.0/ManagedLibrary.dll ";
-    StartProcess(
-        MakeAbsolute((FilePath)"externals/embeddinator-objc/objcgen/bin/Debug/objcgen.exe"),
-        "--compile --debug --out=generated/objc --platform=iOS --target=framework " + libs);
+    // run embeddinator for objective-c
+    StartProcess(objcgen, new ProcessSettings {
+        Arguments = string.Format("--compile --debug --out={0}/objc --platform=iOS --target=framework {1}", output, objcLibs),
+    });
+
+    // run embeddinator for java
+    StartProcess(embeddinator, new ProcessSettings {
+        Arguments = string.Format("--debug --compile --out={0}/java --platform=Android --gen=Java {1}", output, javaLibs),
+        WorkingDirectory = "externals/embeddinator"
+    });
 });
 
 //////////////////////////////////////////////////////////////////////

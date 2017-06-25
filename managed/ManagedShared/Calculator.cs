@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ManagedLibrary
 {
@@ -18,17 +17,17 @@ namespace ManagedLibrary
 			{ Operation.Equals, "=" },
 		};
 
-		private decimal operand;
+		private double operand;
 
 		public Calculator()
 		{
 			Clear();
 		}
 
-		public decimal PreviousOperand { get; private set; }
+		public double PreviousOperand { get; private set; }
 		public Operation Operation { get; private set; }
 
-		public decimal Operand
+		public double Operand
 		{
 			get { return operand; }
 			set
@@ -39,6 +38,7 @@ namespace ManagedLibrary
 		}
 
 		public bool HasOperand { get; set; }
+		public string EX { get; private set; }
 
 		public void PerformOperation(Operation op)
 		{
@@ -60,7 +60,7 @@ namespace ManagedLibrary
 						Operand *= Operand;
 						break;
 					case Operation.SquareRoot:
-						Operand = (decimal)Math.Sqrt((double)Operand);
+						Operand = Math.Sqrt(Operand);
 						break;
 				}
 			}
@@ -106,16 +106,16 @@ namespace ManagedLibrary
 
 				// prepare for the next operation
 				Operation = op;
-				Operand = decimal.Zero;
+				Operand = 0.0;
 				HasOperand = false;
 			}
 		}
 
 		public void Clear()
 		{
-			PreviousOperand = decimal.Zero;
+			PreviousOperand = 0.0;
 			Operation = Operation.None;
-			Operand = decimal.Zero;
+			Operand = 0.0;
 			HasOperand = false;
 		}
 
@@ -140,8 +140,13 @@ namespace ManagedLibrary
 		{
 			symbol = symbol?.Trim() ?? string.Empty;
 
-			if (symbols.ContainsValue(symbol))
-				return symbols.FirstOrDefault(s => s.Value.Equals(symbol, StringComparison.OrdinalIgnoreCase)).Key;
+			foreach (var pair in symbols)
+			{
+				if (pair.Value.Equals(symbol, StringComparison.OrdinalIgnoreCase))
+				{
+					return pair.Key;
+				}
+			}
 
 			return Operation.None;
 		}
@@ -174,7 +179,7 @@ namespace ManagedLibrary
 					display += symbol;
 
 				// update calulator
-				Operand = decimal.Parse(display);
+				Operand = double.Parse(display);
 			}
 			else if (symbol.Equals(".", StringComparison.OrdinalIgnoreCase))
 			{

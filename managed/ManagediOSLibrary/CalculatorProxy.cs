@@ -1,4 +1,4 @@
-﻿using Foundation;
+﻿﻿using Foundation;
 
 using ManagedLibrary;
 
@@ -14,13 +14,13 @@ namespace ManagediOSLibrary
 		}
 
 		[Export("previousOperand")]
-		public NSDecimalNumber PreviousOperand => new NSDecimalNumber(calculator.PreviousOperand);
+		public double PreviousOperand => calculator.PreviousOperand;
 
 		[Export("operation")]
 		public Operation Operation => calculator.Operation;
 
 		[Export("operand")]
-		public NSDecimalNumber Operand => new NSDecimalNumber(calculator.Operand);
+		public double Operand => calculator.Operand;
 
 		[Export("hasOperand")]
 		public bool HasOperand => calculator.HasOperand;

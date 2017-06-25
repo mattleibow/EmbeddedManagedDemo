@@ -25,11 +25,13 @@ namespace ManagediOSLibrary
 		private UILabel display;
 		private UIView displayContainer;
 
+		[Export("init")]
 		public CalculatorView()
 		{
 			Initialize();
 		}
 
+		[Export("initWithFrame:")]
 		public CalculatorView(CGRect frame)
 			: base(frame)
 		{
@@ -133,6 +135,7 @@ namespace ManagediOSLibrary
 			display.Text = calculator.HandleSymbol(display.Text, symbol);
 		}
 
+		[Export("reset")]
 		public void Reset()
 		{
 			calculator.Clear();

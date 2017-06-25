@@ -44,6 +44,7 @@ Task("Build")
     var javaLibs = string.Join(" ", new [] { managedLib.FullPath });
 
     // build the managed library
+    NuGetRestore("managed/managed.sln");
     MSBuild("managed/managed.sln");
 
     // run embeddinator for objective-c

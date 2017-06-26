@@ -14,8 +14,9 @@
 		340AF4621EFEE30500D4F1D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 340AF4611EFEE30500D4F1D6 /* Assets.xcassets */; };
 		340AF4651EFEE30500D4F1D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 340AF4631EFEE30500D4F1D6 /* LaunchScreen.storyboard */; };
 		340AF4701EFEE30500D4F1D6 /* NativeiOSAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 340AF46F1EFEE30500D4F1D6 /* NativeiOSAppTests.m */; };
-		340AF47E1EFEE33600D4F1D6 /* ManagediOSLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340AF47A1EFEE31B00D4F1D6 /* ManagediOSLibrary.framework */; };
-		340AF47F1EFEE33600D4F1D6 /* ManagediOSLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 340AF47A1EFEE31B00D4F1D6 /* ManagediOSLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		345329211F01041100C291F5 /* ManagediOSLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3453291F1F01041100C291F5 /* ManagediOSLibrary.framework */; };
+		345329221F01041C00C291F5 /* ManagediOSLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3453291F1F01041100C291F5 /* ManagediOSLibrary.framework */; };
+		345329231F01041C00C291F5 /* ManagediOSLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3453291F1F01041100C291F5 /* ManagediOSLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				340AF47F1EFEE33600D4F1D6 /* ManagediOSLibrary.framework in Embed Frameworks */,
+				345329231F01041C00C291F5 /* ManagediOSLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,7 +57,7 @@
 		340AF46B1EFEE30500D4F1D6 /* NativeiOSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NativeiOSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		340AF46F1EFEE30500D4F1D6 /* NativeiOSAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeiOSAppTests.m; sourceTree = "<group>"; };
 		340AF4711EFEE30500D4F1D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		340AF47A1EFEE31B00D4F1D6 /* ManagediOSLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ManagediOSLibrary.framework; path = ../../generated/objc/ManagediOSLibrary.framework; sourceTree = "<group>"; };
+		3453291F1F01041100C291F5 /* ManagediOSLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ManagediOSLibrary.framework; path = ../../generated/objc/ManagediOSLibrary.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				340AF47E1EFEE33600D4F1D6 /* ManagediOSLibrary.framework in Frameworks */,
+				345329221F01041C00C291F5 /* ManagediOSLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				345329211F01041100C291F5 /* ManagediOSLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +83,7 @@
 		340AF4491EFEE30500D4F1D6 = {
 			isa = PBXGroup;
 			children = (
-				340AF47A1EFEE31B00D4F1D6 /* ManagediOSLibrary.framework */,
+				3453291F1F01041100C291F5 /* ManagediOSLibrary.framework */,
 				340AF4541EFEE30500D4F1D6 /* NativeiOSApp */,
 				340AF46E1EFEE30500D4F1D6 /* NativeiOSAppTests */,
 				340AF4531EFEE30500D4F1D6 /* Products */,

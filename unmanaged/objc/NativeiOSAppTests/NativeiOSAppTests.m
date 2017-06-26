@@ -58,7 +58,7 @@
     // the next number
     _calculator.operand = 32.1;
     // test
-    XCTAssertFalse(_calculator.hasOperand);
+    XCTAssertTrue(_calculator.hasOperand);
     XCTAssertEqualWithAccuracy(_calculator.operand, 32.1, 0.001);
     XCTAssertEqualWithAccuracy(_calculator.previousOperand, 12.3, 0.001);
     XCTAssertEqual(_calculator.operation, ManagedLibrary_OperationAdd);

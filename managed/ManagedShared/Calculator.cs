@@ -38,7 +38,6 @@ namespace ManagedLibrary
 		}
 
 		public bool HasOperand { get; set; }
-		public string EX { get; private set; }
 
 		public void PerformOperation(Operation op)
 		{

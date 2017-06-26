@@ -35,40 +35,40 @@
 - (void)testSimpleAddition {
     // make sure that we are blank
     XCTAssertFalse(_calculator.hasOperand);
-    XCTAssertEqual(_calculator.operand, [NSDecimalNumber zero]);
-    XCTAssertEqual(_calculator.previousOperand, [NSDecimalNumber zero]);
+    XCTAssertEqualWithAccuracy(_calculator.operand, 0.0, 0.001);
+    XCTAssertEqualWithAccuracy(_calculator.previousOperand, 0.0, 0.001);
     XCTAssertEqual(_calculator.operation, ManagedLibrary_OperationNone);
     
     // now start a simple add
-    _calculator.operand = [NSDecimalNumber decimalNumberWithDecimal: [@12.3 decimalValue]];
+    _calculator.operand = 12.3;
     // test
     XCTAssertTrue(_calculator.hasOperand);
-    XCTAssertEqual(_calculator.operand.floatValue, 12.3f);
-    XCTAssertEqual(_calculator.previousOperand, [NSDecimalNumber zero]);
+    XCTAssertEqualWithAccuracy(_calculator.operand, 12.3, 0.001);
+    XCTAssertEqualWithAccuracy(_calculator.previousOperand, 0.0, 0.001);
     XCTAssertEqual(_calculator.operation, ManagedLibrary_OperationNone);
     
     // do the add
     [_calculator performOperationOp:ManagedLibrary_OperationAdd];
     // test
     XCTAssertFalse(_calculator.hasOperand);
-    XCTAssertEqual(_calculator.operand, [NSDecimalNumber zero]);
-    XCTAssertEqual(_calculator.previousOperand.floatValue, 12.3f);
+    XCTAssertEqualWithAccuracy(_calculator.operand, 0.0, 0.001);
+    XCTAssertEqualWithAccuracy(_calculator.previousOperand, 12.3, 0.001);
     XCTAssertEqual(_calculator.operation, ManagedLibrary_OperationAdd);
     
     // the next number
-    _calculator.operand = [NSDecimalNumber decimalNumberWithDecimal: [@32.1 decimalValue]];
+    _calculator.operand = 32.1;
     // test
     XCTAssertFalse(_calculator.hasOperand);
-    XCTAssertEqual(_calculator.operand.floatValue, 32.1f);
-    XCTAssertEqual(_calculator.previousOperand.floatValue, 12.3f);
+    XCTAssertEqualWithAccuracy(_calculator.operand, 32.1, 0.001);
+    XCTAssertEqualWithAccuracy(_calculator.previousOperand, 12.3, 0.001);
     XCTAssertEqual(_calculator.operation, ManagedLibrary_OperationAdd);
     
     // the equals
     [_calculator performOperationOp:ManagedLibrary_OperationEquals];
     // test
     XCTAssertFalse(_calculator.hasOperand);
-    XCTAssertEqual(_calculator.operand, [NSDecimalNumber zero]);
-    XCTAssertEqual(_calculator.previousOperand.floatValue, 44.4f);
+    XCTAssertEqualWithAccuracy(_calculator.operand, 0.0, 0.001);
+    XCTAssertEqualWithAccuracy(_calculator.previousOperand, 44.4, 0.001);
     XCTAssertEqual(_calculator.operation, ManagedLibrary_OperationNone);
 }
 

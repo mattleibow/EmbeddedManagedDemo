@@ -56,7 +56,7 @@
 		340AF46B1EFEE30500D4F1D6 /* NativeiOSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NativeiOSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		340AF46F1EFEE30500D4F1D6 /* NativeiOSAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeiOSAppTests.m; sourceTree = "<group>"; };
 		340AF4711EFEE30500D4F1D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		340AF47A1EFEE31B00D4F1D6 /* ManagediOSLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ManagediOSLibrary.framework; path = ../../../generated/objc/ManagediOSLibrary.framework; sourceTree = "<group>"; };
+		340AF47A1EFEE31B00D4F1D6 /* ManagediOSLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ManagediOSLibrary.framework; path = ../../generated/objc/ManagediOSLibrary.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +304,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../../generated/objc;
+				FRAMEWORK_SEARCH_PATHS = ../../generated/objc;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -352,7 +352,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = ../../../generated/objc;
+				FRAMEWORK_SEARCH_PATHS = ../../generated/objc;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

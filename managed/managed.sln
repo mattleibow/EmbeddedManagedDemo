@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagediOSLibrary", "ManagediOSLibrary\ManagediOSLibrary.csproj", "{06E267C0-50AA-442A-AE11-C12AA5EDF535}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedStandardLibrary", "ManagedStandardLibrary\ManagedStandardLibrary.csproj", "{242BA04E-3402-40C4-B724-A3AEED1AF5EB}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ManagedShared", "ManagedShared\ManagedShared.shproj", "{D4117D10-D97A-44B0-BCBA-2F50ED683978}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedLibrary", "ManagedLibrary\ManagedLibrary.csproj", "{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}"
 EndProject
 Global
@@ -19,10 +15,6 @@ Global
 		{06E267C0-50AA-442A-AE11-C12AA5EDF535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E267C0-50AA-442A-AE11-C12AA5EDF535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E267C0-50AA-442A-AE11-C12AA5EDF535}.Release|Any CPU.Build.0 = Release|Any CPU
-		{242BA04E-3402-40C4-B724-A3AEED1AF5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{242BA04E-3402-40C4-B724-A3AEED1AF5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{242BA04E-3402-40C4-B724-A3AEED1AF5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{242BA04E-3402-40C4-B724-A3AEED1AF5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}.Release|Any CPU.ActiveCfg = Release|Any CPU

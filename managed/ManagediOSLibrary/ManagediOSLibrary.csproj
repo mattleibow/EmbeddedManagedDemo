@@ -50,9 +50,9 @@
     <Compile Include="CalculatorProxy.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ManagedStandardLibrary\ManagedStandardLibrary.csproj">
-      <Project>{242BA04E-3402-40C4-B724-A3AEED1AF5EB}</Project>
-      <Name>ManagedStandardLibrary</Name>
+    <ProjectReference Include="..\ManagedLibrary\ManagedLibrary.csproj">
+      <Project>{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}</Project>
+      <Name>ManagedLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

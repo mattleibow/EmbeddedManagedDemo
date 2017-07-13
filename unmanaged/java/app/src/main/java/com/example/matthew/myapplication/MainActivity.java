@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import managedlibrary_dll.managedlibrary.Calculator;
-import managedlibrary_dll.managedlibrary.Operation;
+import managedlibrary.managedlibrary.Calculator;
+import managedlibrary.managedlibrary.Operation;
+import managedandroidlibrary.managedandroidlibrary.CalculatorView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         _display = (TextView)findViewById(R.id.display);
 
         _calculator = new Calculator();
-        String t = _calculator.getEX();
+
+        try {
+            CalculatorView cv = new CalculatorView(this);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     public void onButtonClick(View v) {

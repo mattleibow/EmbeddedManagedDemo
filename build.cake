@@ -37,10 +37,11 @@ Task("Build")
     var objcgen = MakeAbsolute((FilePath)"externals/embeddinator-objc/objcgen/bin/Debug/objcgen.exe");
 
     var iOSLib = MakeAbsolute((FilePath)"managed/ManagediOSLibrary/bin/Debug/ManagediOSLibrary.dll");
+    var androidLib = MakeAbsolute((FilePath)"managed/ManagedAndroidLibrary/bin/Debug/ManagedAndroidLibrary.dll");
     var managedLib = MakeAbsolute((FilePath)"managed/ManagedLibrary/bin/Debug/netstandard1.0/ManagedLibrary.dll");
 
     var objcLibs = string.Join(" ", new [] { iOSLib.FullPath, managedLib.FullPath });
-    var javaLibs = string.Join(" ", new [] { managedLib.FullPath });
+    var javaLibs = string.Join(" ", new [] { androidLib.FullPath, managedLib.FullPath });
 
     // build the managed library
     NuGetRestore("managed/managed.sln");

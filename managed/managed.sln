@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagediOSLibrary", "Manage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedLibrary", "ManagedLibrary\ManagedLibrary.csproj", "{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedAndroidLibrary", "ManagedAndroidLibrary\ManagedAndroidLibrary.csproj", "{59FE7B33-4E00-47FF-88A7-DFD0F56AB02C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B84FDFE-919B-47ED-8713-EDA8B1A933B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59FE7B33-4E00-47FF-88A7-DFD0F56AB02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59FE7B33-4E00-47FF-88A7-DFD0F56AB02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59FE7B33-4E00-47FF-88A7-DFD0F56AB02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59FE7B33-4E00-47FF-88A7-DFD0F56AB02C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

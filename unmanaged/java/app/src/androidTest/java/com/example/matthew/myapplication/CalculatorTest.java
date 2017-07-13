@@ -7,8 +7,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import managedlibrary_dll.managedlibrary.Calculator;
-import managedlibrary_dll.managedlibrary.Operation;
+import managedlibrary.managedlibrary.Calculator;
+import managedlibrary.managedlibrary.Operation;
 
 import static org.junit.Assert.*;
 

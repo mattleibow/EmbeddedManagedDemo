@@ -2,8 +2,8 @@ package com.example.matthew.myapplication;
 
 import org.junit.Test;
 
-import managedlibrary_dll.managedlibrary.Calculator;
-import managedlibrary_dll.managedlibrary.Operation;
+import managedlibrary.managedlibrary.Calculator;
+import managedlibrary.managedlibrary.Operation;
 
 import static org.junit.Assert.*;
 
